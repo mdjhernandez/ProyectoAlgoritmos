@@ -38,7 +38,7 @@ def ingresarProducto():
         
         cantidad = validar_cantidad()   
 
-        producto_nuevo = codigo, nombre, precio, cantidad
+        producto_nuevo = [f"Código: {codigo},Nombre: {nombre},Precio: {precio},Cantidad: {cantidad}"]
         inventario.append(producto_nuevo)
         
         print(f"Producto {nombre} agregado al inventario.")
