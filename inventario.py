@@ -52,8 +52,9 @@ def buscar_inventario():
     productos_encontrados = []
     
     for producto in inventario:
-        if metodo == "1" and producto.codigo.lower() == producto_buscar.lower() \
-        or metodo =="2" and producto_buscar.lower() in producto.nombre.lower():
+        if metodo == "1" and producto[0].lower() == producto_buscar:
+            productos_encontrados.append(producto)
+        elif metodo == "2" and producto_buscar in producto[1].lower():
             productos_encontrados.append(producto)
             
     if productos_encontrados:
