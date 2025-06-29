@@ -17,4 +17,5 @@ while not precio_valido:
                 print("Error: El precio del producto debe ser mayor que cero")
             else:
                 precio_valido = True
+                #jopo
 
