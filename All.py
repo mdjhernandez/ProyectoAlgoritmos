@@ -4,6 +4,14 @@ import time
 inventario = []
 inventarioFormateado = []
 
+def formatear_inventario():
+    inventarioFormateado.clear()
+    for p in inventario:
+        inventarioFormateado.append(
+            [f"Código: {p[0]}, Nombre: {p[1]}, Precio: {p[2]}, Cantidad: {p[3]}"]
+        )
+
+
 def revisar_inventario():
     print("Inventario Actual")
     if not inventario:
@@ -113,75 +121,63 @@ def validar_nombre():
             nombre = input("Nombre del producto: ")
     return nombre
 
+def quicksort(mat, paso=0, columna=0):
+    if len(mat) <= 1:
+        return mat
+    else:
+        pivote = mat[len(mat) // 2][columna]
+        izquierda = []
+        centro = []
+        derecha = []
+        for x in mat:
+            if x[columna] < pivote:
+                izquierda.append(x)
+            elif x[columna] == pivote:
+                centro.append(x)
+            else:
+                derecha.append(x)
+            paso += 1
+        return quicksort(izquierda, paso=paso) + centro + quicksort(derecha, paso=paso)
+    
+def merge_sort(array, columna=1):
+    if len(array) > 1:
+        mid = len(array) // 2
+        left_half = array[:mid]
+        right_half = array[mid:]
 
+        merge_sort(left_half, columna)
+        merge_sort(right_half, columna)
 
+        i = j = k = 0
 
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i][columna] < right_half[j][columna]:
+                array[k] = left_half[i]
+                i += 1
+            else:
+                array[k] = right_half[j]
+                j += 1
+            k += 1
 
+        while i < len(left_half):
+            array[k] = left_half[i]
+            i += 1
+            k += 1
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        while j < len(right_half):
+            array[k] = right_half[j]
+            j += 1
+            k += 1
 
 
 def interfaz():
-    print("\n--- SISTEMA DE GESTION DE INVENTARIO ---")
-    print()
+    print("\n--- SISTEMA DE GESTION DE INVENTARIO ---\n")
     print("1. Ver Todos los productos del inventario")
     print("2. Buscar producto")
     print("3. Ingresar productor")
-    print("4. Eliminar producto")
-    print("5. Actualizar producto")
-    print("6. Ordenar inventario")
+    print("4. Vender producto")
+    print("5. Actualizar por reposicion o compra un producto")
+    print("6. Ordenar el inventario")
     print("7. Cargar Archivo del inventario")
     print("7. Guardar Inventario")
     print("9. Salir\n")
@@ -202,9 +198,31 @@ def main():
             pass
         elif opciones=="5":
             pass
-        elif opciones =="6":
-            pass    
+        elif opciones =="6": 
+            print("\n--De que forma quiere Ordenar el Inventario..--")
+            print("1. Por Código")
+            print("2. Por Nombre")
+            respuesta = input("Selecciona una opción (1 o 2): ")
+
+            if respuesta == "1":
+                merge_sort(inventario, columna=0)
+                formatear_inventario()  
+                print("\nInventario ordenado:")
+                for producto in inventarioFormateado:
+                    print(producto)
+            else:
+                quicksort(inventario, columna=1)
+                formatear_inventario()  
+                print("\nInventario ordenado:")
+                for producto in inventarioFormateado:
+                    print(producto)
+            time.sleep(3)
+   
         elif opciones =="7":
+            pass 
+        elif opciones =="8":
+            pass 
+        elif opciones =="9":
             print("Haz salido del sistema...")
             break
         else:
