@@ -5,67 +5,60 @@ inventario = [
     ["101", "Amaranta", 49.99, 8]
 ]
 
-
-
-
-def buscar_inventario(inventario):
-    metodo = input("Busca por (1) Código o (2) Nombre: ")
-    
-    while metodo != "1" and metodo != "2":
-        print("Error: Introduce una opcion valida. ")
-        metodo = input("Busca por (1) Código o (2) Nombre: ")
-        
-        
-        
-    producto_buscar = input("Ingrese el producto a buscar: ")
-    
-    productos_encontrados = []
-    
-    for producto in inventario:
-        if metodo == "1" and str(producto[0]) == producto_buscar:
-            productos_encontrados.append(producto)
-        elif metodo == "2" and producto_buscar in producto[1].lower():
-            productos_encontrados.append(producto)
-            
-    if productos_encontrados:
-        print("Productos Encontrados: ")
-        for x in productos_encontrados:
-            print(x)
+def quicksort(mat, paso=0, columna=1):
+    if len(mat) <= 1:
+        return mat
     else:
-        print("No se encontraron productos ")
-    return productos_encontrados
+        pivote = mat[len(mat) // 2][columna]
+        izquierda = []
+        centro = []
+        derecha = []
+        for x in mat:
+            if x[columna] < pivote:
+                izquierda.append(x)
+            elif x[columna] == pivote:
+                centro.append(x)
+            else:
+                derecha.append(x)
+            paso += 1
+        return quicksort(izquierda, paso=paso) + centro + quicksort(derecha, paso=paso)
+    
+def merge_sort(array, columna=0):
+    if len(array) > 1:
+        mid = len(array) // 2
+        left_half = array[:mid]
+        right_half = array[mid:]
 
+        merge_sort(left_half, columna)
+        merge_sort(right_half, columna)
 
-def vender_producto(inventario):
-    print("Busca el producto que deseas vender:")
-    productos = buscar_inventario()
-    #if len(productos) > 1:
-        #print("Hay varios productos encontrados. Por favor sé más específico.")
-        #return
-    producto_encontrado = productos[0]
-    nombre = producto_encontrado[1]
-    cantidad_disponible = producto_encontrado[3]
+        i = j = k = 0
 
-    print(f"\nProducto seleccionado: {nombre}")
-    print(f"Cantidad disponible: {cantidad_disponible}")
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i][columna] < right_half[j][columna]:
+                array[k] = left_half[i]
+                i += 1
+            else:
+                array[k] = right_half[j]
+                j += 1
+            k += 1
 
-    cantidad_vender = input("Ingrese la cantidad a vender: ")
+        while i < len(left_half):
+            array[k] = left_half[i]
+            i += 1
+            k += 1
 
-    while not int(cantidad_vender) <= 0:
-        print(" Debes ingresar un número entero positivo.")
-        cantidad_vender = input("Cantidad a vender: ")
+        while j < len(right_half):
+            array[k] = right_half[j]
+            j += 1
+            k += 1
 
-    cantidad_vender = int(cantidad_vender)
+codigo=merge_sort(inventario, columna=0)
+print("\nInventario ordenado:")
+for codigo in inventario:
+    print(codigo)
 
-    if cantidad_vender > cantidad_disponible:
-        print(" No puedes vender más de lo que tienes en inventario.")
-    else:
-        producto_encontrado[3] -= cantidad_vender
-        print(f" Venta realizada. Quedan {producto_encontrado[3]} unidades de {nombre}.")
-
-
-
-
-
-buscar_inventario(inventario)
-vender_producto(inventario)
+nombre=quicksort(inventario)
+print("Nombre")
+for fila in nombre:
+    print(fila)

@@ -121,7 +121,7 @@ def validar_nombre():
             nombre = input("Nombre del producto: ")
     return nombre
 
-def quicksort(mat, paso=0, columna=0):
+def quicksort(mat, paso=0, columna=1):
     if len(mat) <= 1:
         return mat
     else:
@@ -139,7 +139,7 @@ def quicksort(mat, paso=0, columna=0):
             paso += 1
         return quicksort(izquierda, paso=paso) + centro + quicksort(derecha, paso=paso)
     
-def merge_sort(array, columna=1):
+def merge_sort(array, columna=0):
     if len(array) > 1:
         mid = len(array) // 2
         left_half = array[:mid]
