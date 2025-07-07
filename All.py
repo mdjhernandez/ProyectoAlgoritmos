@@ -3,6 +3,13 @@ import time
 
 inventario = []
 inventarioFormateado = []
+inventarioPrueba = [
+    ["002", "Pantalón Negro", 35.50, 5],
+    ["001", "Camisa Azul", 25.99, 10],
+    ["101", "Amaranta", 49.99, 8],
+    ["099", "Cajero", 49.99, 8]
+]
+
 
 def formatear_inventario():
     inventarioFormateado.clear()
@@ -205,17 +212,17 @@ def main():
             respuesta = input("Selecciona una opción (1 o 2): ")
 
             if respuesta == "1":
-                merge_sort(inventario, columna=0)
+                merge_sort(inventarioPrueba, columna=0)
                 formatear_inventario()  
                 print("\nInventario ordenado:")
-                for producto in inventarioFormateado:
-                    print(producto)
+                for producto in inventarioPrueba:
+                    print(f"Codigo: {producto[0]}, Nombre: {producto[1]}, precio: {producto[2]}, Cantidad: {producto[3]}")
             else:
-                quicksort(inventario, columna=1)
+                nombreOrdenado = quicksort(inventarioPrueba, columna=1)
                 formatear_inventario()  
                 print("\nInventario ordenado:")
-                for producto in inventarioFormateado:
-                    print(producto)
+                for producto in nombreOrdenado:
+                    print(f"Codigo: {producto[0]}, Nombre: {producto[1]}, precio: {producto[2]}, Cantidad: {producto[3]}")
             time.sleep(3)
    
         elif opciones =="7":
