@@ -69,4 +69,3 @@ def vender_producto(inventario):
 
 buscar_inventario(inventario)
 vender_producto(inventario)
-
