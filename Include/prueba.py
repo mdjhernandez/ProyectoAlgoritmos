@@ -6,7 +6,10 @@ inventario = [
 ]
 
 
-def buscar_inventario(inventario):
+
+def vender_producto(inventario):
+    print("Busca el producto que deseas vender:")
+    #productos = buscar_inventario(inventario)
     metodo = input("Busca por (1) Código o (2) Nombre: ")
     
     while metodo != "1" and metodo != "2":
@@ -25,12 +28,7 @@ def buscar_inventario(inventario):
     if productos_encontrados:
         for x in productos_encontrados:
             print(x)
-    return productos_encontrados
-
-
-def vender_producto(inventario):
-    print("Busca el producto que deseas vender:")
-    productos = buscar_inventario(inventario)
+    productos= productos_encontrados
     producto_encontrado = productos[0]
     nombre = producto_encontrado[1]
     cantidad_disponible = producto_encontrado[3]
@@ -45,10 +43,12 @@ def vender_producto(inventario):
         print(" No puedes vender más de lo que tienes en inventario.")
         cantidad_vender = input("Ingrese nuevamente la cantidad a vender: ")
         cantidad_vender = int(cantidad_vender)
+    elif (cantidad_vender <= 0):
+        print("La cantidad a Vender no puede ser un numero negativo")
     else:
         producto_encontrado[3] -= cantidad_vender
         print(f" Venta realizada. Quedan {producto_encontrado[3]} unidades de {nombre}.")
 
-buscar_inventario(inventario)
+
 vender_producto(inventario)
 print()
