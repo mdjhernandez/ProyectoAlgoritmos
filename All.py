@@ -3,20 +3,13 @@ import time
 
 inventario = []
 inventarioFormateado = []
-inventarioPrueba = [
-    ["002", "Pantalón Negro", 35.50, 5],
-    ["001", "Camisa Azul", 25.99, 10],
-    ["101", "Amaranta", 49.99, 8],
-    ["099", "Cajero", 49.99, 8]
-]
+#inventarioPrueba = [
+    #["002", "Pantalón Negro", 35.50, 5],
+    #["001", "Camisa Azul", 25.99, 10],
+    #["101", "Amaranta", 49.99, 8],
+    #["099", "Cajero", 49.99, 8]
+#]
 
-
-#def formatear_inventario():
-    #inventarioFormateado.clear()
-    #for p in inventario:
-        #inventarioFormateado.append(
-            #[f"Código: {p[0]}, Nombre: {p[1]}, Precio: {p[2]}, Cantidad: {p[3]}"]
-        #)
 
 
 def revisar_inventario():
@@ -177,12 +170,6 @@ def merge_sort(array, columna=0):
             k += 1
 
 
-inventario = [
-    ["001", "Camisa Azul", 25.99, 10],
-    ["002", "Pantalón Negro", 35.50, 5],
-    ["101", "Amaranta", 49.99, 8]
-]
-
 def vender_producto(inventario):
     producto_encontrado = None  # Inicializamos como None para controlar si se encontró
     
@@ -263,21 +250,21 @@ def main():
         elif opciones =="3":
             ingresarProducto()
         elif opciones == "4":
-            vender_producto(inventario=)
+            vender_producto(inventario)
         elif opciones=="5":
-            pass
+            ingresarProducto()
         elif opciones =="6": 
             print("\n--De que forma quiere Ordenar el Inventario..--")
             print("1. Por Código")
             print("2. Por Nombre")
             respuesta = input("Selecciona una opción (1 o 2): ")
             if respuesta == "1":
-                merge_sort(inventarioPrueba, columna=0)
+                merge_sort(inventario, columna=0)
                 print("\nInventario ordenado:")
-                for producto in inventarioPrueba:
+                for producto in inventario:
                     print(f"Codigo: {producto[0]}, Nombre: {producto[1]}, precio: {producto[2]}, Cantidad: {producto[3]}")
             else:
-                nombreOrdenado = quicksort(inventarioPrueba, columna=1)  
+                nombreOrdenado = quicksort(inventario, columna=1)  
                 print("\nInventario ordenado:")
                 for producto in nombreOrdenado:
                     print(f"Codigo: {producto[0]}, Nombre: {producto[1]}, precio: {producto[2]}, Cantidad: {producto[3]}")
