@@ -43,8 +43,10 @@ def vender_producto(inventario):
         print(" No puedes vender más de lo que tienes en inventario.")
         cantidad_vender = input("Ingrese nuevamente la cantidad a vender: ")
         cantidad_vender = int(cantidad_vender)
-    if (cantidad_vender <= 0):
-        print("La cantidad a Vender no puede ser un numero negativo")
+    while (cantidad_vender <= 0):
+        print("Error no puedes vender cantidades negativas.")
+        cantidad_vender = input("Ingrese nuevamente la cantidad a vender: ")
+        cantidad_vender = int(cantidad_vender)
     else:
         producto_encontrado[3] -= cantidad_vender
         print(f"Venta realizada. Quedan {producto_encontrado[3]} unidades de {nombre}.")
