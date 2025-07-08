@@ -11,12 +11,12 @@ inventarioPrueba = [
 ]
 
 
-def formatear_inventario():
-    inventarioFormateado.clear()
-    for p in inventario:
-        inventarioFormateado.append(
-            [f"Código: {p[0]}, Nombre: {p[1]}, Precio: {p[2]}, Cantidad: {p[3]}"]
-        )
+#def formatear_inventario():
+    #inventarioFormateado.clear()
+    #for p in inventario:
+        #inventarioFormateado.append(
+            #[f"Código: {p[0]}, Nombre: {p[1]}, Precio: {p[2]}, Cantidad: {p[3]}"]
+        #)
 
 
 def revisar_inventario():
@@ -210,16 +210,13 @@ def main():
             print("1. Por Código")
             print("2. Por Nombre")
             respuesta = input("Selecciona una opción (1 o 2): ")
-
             if respuesta == "1":
                 merge_sort(inventarioPrueba, columna=0)
-                formatear_inventario()  
                 print("\nInventario ordenado:")
                 for producto in inventarioPrueba:
                     print(f"Codigo: {producto[0]}, Nombre: {producto[1]}, precio: {producto[2]}, Cantidad: {producto[3]}")
             else:
-                nombreOrdenado = quicksort(inventarioPrueba, columna=1)
-                formatear_inventario()  
+                nombreOrdenado = quicksort(inventarioPrueba, columna=1)  
                 print("\nInventario ordenado:")
                 for producto in nombreOrdenado:
                     print(f"Codigo: {producto[0]}, Nombre: {producto[1]}, precio: {producto[2]}, Cantidad: {producto[3]}")
