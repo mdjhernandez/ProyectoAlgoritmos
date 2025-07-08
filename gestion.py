@@ -1,11 +1,10 @@
-import os
-import pickle
 import time
 from Include.inventario import revisar_inventario,ingresarProducto, buscar_inventario, inventario
 from ventas import vender_producto
 from ordenamientos import quicksort, merge_sort
+from archivosbinarios import guardar_inventario, cargar_inventario
 
-Listainventario = inventario
+
 
 def interfaz():
     print("\n--- SISTEMA DE GESTION DE INVENTARIO ---\n")
@@ -41,12 +40,12 @@ def main():
             print("2. Por Nombre")
             respuesta = input("Selecciona una opción (1 o 2): ")
             if respuesta == "1":
-                merge_sort(Listainventario, columna=0)
+                merge_sort(inventario, columna=0)
                 print("\nInventario ordenado:")
-                for producto in Listainventario:
+                for producto in inventario:
                     print(f"Codigo: {producto[0]}, Nombre: {producto[1]}, precio: {producto[2]}, Cantidad: {producto[3]}")
             else:
-                nombreOrdenado = quicksort(Listainventario, columna=1)  
+                nombreOrdenado = quicksort(inventario, columna=1)  
                 print("\nInventario ordenado:")
                 for producto in nombreOrdenado:
                     print(f"Codigo: {producto[0]}, Nombre: {producto[1]}, precio: {producto[2]}, Cantidad: {producto[3]}")

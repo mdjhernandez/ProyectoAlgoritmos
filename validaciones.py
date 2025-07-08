@@ -39,3 +39,4 @@ def validar_nombre():
             print("Error: El nombre no puede contener números ni caracteres especiales")
             nombre = input("Nombre del producto: ")
     return nombre
+

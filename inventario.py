@@ -27,9 +27,9 @@ def ingresarProducto():
         
         
     if producto_existenten:
-        cantidad = int(input(f"Cuantidad para añadir (En el inventario hay{producto_existenten.cantidad})"))
+        cantidad = int(input(f"Cuantidad para añadir (En el inventario hay{producto_existenten[3]})"))
         producto_existenten += cantidad
-        print(f"Se actualizo el producto {producto_existenten.nombre}. Hay ahora: {producto_existenten.cantidad}")
+        print(f"Se actualizo el producto {producto_existenten[1]}. Hay ahora: {producto_existenten[3]}")
     else:
         
         nombre = validar_nombre()

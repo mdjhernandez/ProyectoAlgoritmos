@@ -1,6 +1,7 @@
+from archivosbinarios import guardar_inventario
 
 
-def vender_producto(inventario):
+def vender_producto(listaInventario):
     producto_encontrado = None  # Inicializamos como None para controlar si se encontró
     
     while producto_encontrado is None:  # Repetir hasta encontrar un producto válido
@@ -16,13 +17,13 @@ def vender_producto(inventario):
         productos_encontrados = []
         
         # Buscar en el inventario
-        for producto in inventario:
+        for producto in listaInventario:
             if (metodo == "1" and str(producto[0]) == producto_buscar) or \
                (metodo == "2" and producto_buscar in producto[1].lower()):
                 productos_encontrados.append(producto)
         
         if not productos_encontrados:
-            print("Error: Producto no encontrado. Intente nuevamente.")
+            print("Error: Producto no encontrado")
         else:
             # Seleccionar el producto (asumimos el primero si hay varios)
             producto_encontrado = productos_encontrados[0]
@@ -52,3 +53,4 @@ def vender_producto(inventario):
     producto_encontrado[3] -= cantidad_vender
     print(f"Venta realizada. Quedan {producto_encontrado[3]} unidades de {nombre}.")
 
+    guardar_inventario(listaInventario)
