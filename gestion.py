@@ -1,9 +1,8 @@
 import time
-from inventario import revisar_inventario, ingresarProducto, buscar_inventario, cargar_inventario, guardar_inventario
+from inventario import revisar_inventario, ingresarProducto, buscar_inventario, cargar_inventario, guardar_inventario, inventario
 from ventas import vender_producto
 from ordenamientos import quicksort, merge_sort
 from Actualizacion import Actualizar
-from inventario import inventario
 
 def interfaz():
     print("\n--- SISTEMA DE GESTION DE INVENTARIO ---\n")
@@ -18,7 +17,7 @@ def interfaz():
     print("9. Salir\n")
 
 def main():
-    cargar_inventario()  # Cargar inventario al iniciar
+    cargar_inventario()  # Carga el inventario al iniciar el programa
 
     while True:
         interfaz()
@@ -46,7 +45,7 @@ def main():
             if respuesta == "1":
                 merge_sort(inventario, columna=0)
             else:
-                inventario[:] = quicksort(inventario, columna=1)  # actualizar lista en sitio
+                inventario[:] = quicksort(inventario, columna=1)
             
             print("\nInventario ordenado:")
             for producto in inventario:

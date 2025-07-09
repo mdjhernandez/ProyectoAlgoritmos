@@ -23,15 +23,15 @@ def validar_cantidad():
     return cantidad_final
 
 def validar_codigo():
-    codigo_normal = input("Código del producto: ")    
-    formato_codigo = re.fullmatch(r'^\d+(\.\d{1,2})?$', codigo_normal)
+    codigo_normal = input("Código del producto: ")
+    formato_codigo = re.fullmatch(r'^\d+$', codigo_normal)  # Solo números enteros
     while not formato_codigo:
-            print("Error: El Código no puede contener letras ni números negativos ")
-            codigo_normal = input("Código del producto: ")
-            formato_codigo = re.fullmatch(r'^\d+(\.\d{1,2})?$', codigo_normal)
-            
+        print("Error: El Código debe ser un número entero positivo.")
+        codigo_normal = input("Código del producto: ")
+        formato_codigo = re.fullmatch(r'^\d+$', codigo_normal)
     codigo_final = int(codigo_normal)
     return codigo_final
+
 
 def validar_nombre():
     nombre = input("Nombre del producto: ")

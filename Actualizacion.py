@@ -14,10 +14,19 @@ def Actualizar():
         productos_encontrados = []
         
         for i, producto in enumerate(inventario):
-            if (metodo == "1" and str(producto[0]) == producto_buscar) or \
-               (metodo == "2" and producto_buscar in producto[1].lower()):
-                productos_encontrados.append((i, producto))
-                print(producto)
+            if metodo == "1":
+                try:
+                    codigo_buscar = int(producto_buscar)
+                except ValueError:
+                    print("Código inválido, ingresa un número entero.")
+                    continue
+                if producto[0] == codigo_buscar:
+                    productos_encontrados.append((i, producto))
+                    print(producto)
+            else:
+                if producto_buscar in producto[1].lower():
+                    productos_encontrados.append((i, producto))
+                    print(producto)
         
         if not productos_encontrados:
             print("Ese producto no se encuentra en el inventario, ¿Desea incluirlo?")
@@ -39,7 +48,7 @@ def Actualizar():
     res = input("Seleccione una de las opciones:\n")
 
     if res == "1":
-        new_codigo = input("Ingrese el nuevo código para el producto: ")
+        new_codigo = int(input("Ingrese el nuevo código para el producto: "))
         inventario[indice][0] = new_codigo
     elif res == "2":
         new_nombre = input("Ingrese el nuevo nombre para el producto: ")

@@ -58,9 +58,17 @@ def buscar_inventario():
 
     productos_encontrados = []
     for producto in inventario:
-        if (metodo == "1" and str(producto[0]) == producto_buscar) or \
-           (metodo == "2" and producto_buscar in producto[1].lower()):
-            productos_encontrados.append(producto)
+        if metodo == "1":
+            try:
+                codigo_buscar = int(producto_buscar)
+            except ValueError:
+                print("Código inválido, ingresa un número entero.")
+                return []
+            if producto[0] == codigo_buscar:
+                productos_encontrados.append(producto)
+        else:
+            if producto_buscar in producto[1].lower():
+                productos_encontrados.append(producto)
     
     if productos_encontrados:
         print("Productos encontrados:")
@@ -70,3 +78,4 @@ def buscar_inventario():
         print("No se encontraron productos.")
     
     return productos_encontrados
+
