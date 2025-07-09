@@ -1,85 +1,88 @@
 import time
 from Include.inventario import revisar_inventario,ingresarProducto, buscar_inventario, inventario
 
-inventarioPrueba = [
-    ["002", "Pantalón Negro", 35.50, 5],
-["001", "Camisa Azul", 25.99, 10],
-    ["101", "Amaranta", 49.99, 8],
-    ["099", "Cajero", 49.99, 8]
-]
-
-
 
 def Actualizar(inventario):
-    producto_encontrado = None  # Inicializamos como None para controlar si se encontró
+    producto_encontrado = None  
     
-    while producto_encontrado is None:  # Repetir hasta encontrar un producto válido
+    while producto_encontrado is None:
         print("\nBusca el producto que deseas actualizar:")
         metodo = input("Busca el producto por (1) Código o (2) Nombre: ")
-        # Validar método de búsqueda
+        
         while metodo != "1" and metodo != "2":
             print("Error: Introduce una opción válida.")
-            metodo = input("Busca el producto por (1) Código o (2) Nombre: ")   
+            metodo = input("Busca el producto por (1) Código o (2) Nombre: ")
+        
         producto_buscar = input("Ingrese el producto a buscar: ").lower()
         productos_encontrados = []
-        # Buscar en el inventario
+        
         for i, producto in enumerate(inventario):
             if (metodo == "1" and str(producto[0]) == producto_buscar) or \
-            (metodo == "2" and producto_buscar in producto[1].lower()):
+               (metodo == "2" and producto_buscar in producto[1].lower()):
                 productos_encontrados.append((i, producto))
                 for fila in productos_encontrados:
                     f = fila[0]
+                    print(inventario[f])
         
         if not productos_encontrados:
-            print("Ese Producto no se encuentra en el inventario, Desea incluirlo?")
-            select=input("Seleccione (1) para Si, (2) si es No")
-            if (select==1):
-                ingresarProducto()
+            print("Ese Producto no se encuentra en el inventario, ¿Desea incluirlo?")
+            select = input("Seleccione (1) para Sí, (2) para No: ")
+            if select == "1":
+                pass
+                #ingresarProducto()  
             else:
-                break #Se regrese al invent
+                break  # Se regresa
         else:
-            # Seleccionar el producto (asumimos el primero si hay varios)
             indice, producto_encontrado = productos_encontrados[0]
     
-    
-    # Proceso de Actualizacion (solo si se encontró el producto)
-    print("\nQue cualidad desea Modificar \n")
-    print("1. Codigo")
+    print("\nQué cualidad desea modificar:")
+    print("1. Código")
     print("2. Nombre")
     print("3. Precio")
     print("4. Cantidad")
-    res=input("Seleccione una de las opciones\n")
-    #nombre = producto_encontrado[1]
+    res = input("Seleccione una de las opciones:\n")
+
     if res == "1":
-        indice, codigo_anterior = producto_encontrado[0]
-        nombre=producto_encontrado[1]
+        codigo_anterior = inventario[indice][0]
+        nombre = inventario[indice][1]
         print(f"\nProducto seleccionado: {nombre}")
-        print(f"Codigo Actual: {codigo_anterior}")
-        new_cant=int(input("Ingrese el nuevo Codigo para el producto ")) #ARREGLAR ESTA PREGUNTA
-        producto_encontrado[0] = new_cant
-        print(f"Actualizacion realizada. Ahora el producto {nombre} tiene por codigo {new_cant}.")
-        inventario[indice][0] = new_cant = new_cant
-    if res  =="2":
-        nombre=producto_encontrado[1]
-        print(f"\nProducto seleccionado: {nombre}")
-        print(f"Nombre Actual: {nombre}")
-        new_cant=int(input("Ingrese el nuevo Nombre para el producto ")) #ARREGLAR ESTA PREGUNTA
-        producto_encontrado[1] = new_cant
-        print(f"Actualizacion realizada. Ahora el producto {nombre} tiene por nombre {new_cant}.")
+        print(f"Código actual: {codigo_anterior}")
+        new_cant = input("Ingrese el nuevo código para el producto: ")
+        inventario[indice][0] = new_cant
+        print(f"Actualización realizada. Ahora el producto {nombre} tiene por código {new_cant}.")
+    
+    if res == "2":
+        nombre_actual = inventario[indice][1]
+        print(f"\nProducto seleccionado: {nombre_actual}")
+        print(f"Nombre actual: {nombre_actual}")
+        new_nombre = input("Ingrese el nuevo nombre para el producto: ")
+        inventario[indice][1] = new_nombre
+        print(f"Actualización realizada. Ahora el producto se llama {new_nombre}.")
+
     if res == "3":
-        precio_anterior = producto_encontrado[2]
-        nombre=producto_encontrado[1]
+        precio_anterior = inventario[indice][2]
+        nombre = inventario[indice][1]
         print(f"\nProducto seleccionado: {nombre}")
-        print(f"Precio Actual: {precio_anterior}")
-        new_cant=int(input("Ingrese el nuevo Precio para el producto ")) #ARREGLAR ESTA PREGUNTA
-        producto_encontrado[2] = new_cant
-        print(f"Actualizacion realizada. Ahora el producto {nombre} tiene por codigo {new_cant}.")
-    if res == "4" :
-        cantidad_disponible = producto_encontrado[3]
+        print(f"Precio actual: {precio_anterior}")
+        new_precio = float(input("Ingrese el nuevo precio para el producto: "))
+        inventario[indice][2] = new_precio
+        print(f"Actualización realizada. Ahora el producto {nombre} cuesta {new_precio}.")
+
+    if res == "4":
+        nombre = inventario[indice][1]
+        cantidad_disponible = inventario[indice][3]
         print(f"\nProducto seleccionado: {nombre}")
         print(f"Cantidad disponible: {cantidad_disponible}")
-        new_cant=int(input("Ingrese la cantidad de productos comprados para el producto ")) #ARREGLAR ESTA PREGUNTA
-        producto_encontrado[3] += new_cant
-        print(f"Actualizacion realizada. Ahora el producto cuenta con {producto_encontrado[3]} unidades de {nombre}.") #Bonito no esta
+        new_cant = int(input("Ingrese la cantidad de productos comprados: "))
+        inventario[indice][3] += new_cant
+        print(f"Actualización realizada. Ahora el producto cuenta con {inventario[indice][3]} unidades de {nombre}.")
+        
 
-Actualizar(inventarioPrueba)
+
+print("\nInventario actualizado:")
+    
+for fila in inventario:
+    print(fila)
+    
+
+

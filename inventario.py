@@ -2,6 +2,7 @@ import os
 import pickle
 import re
 from Include.validaciones import validar_precio, validar_cantidad, validar_codigo, validar_nombre
+from Actualizacion import Actualizar
 # Lista de inventario
 inventario = []
 inventarioFormateado = []

@@ -54,7 +54,6 @@ def Actualizar(inventario):
         new_cant = input("Ingrese el nuevo código para el producto: ")
         inventario[indice][0] = new_cant
         print(f"Actualización realizada. Ahora el producto {nombre} tiene por código {new_cant}.")
-        Actualizar(inventarioPrueba)
     
     if res == "2":
         nombre_actual = inventario[indice][1]
@@ -83,5 +82,11 @@ def Actualizar(inventario):
         print(f"Actualización realizada. Ahora el producto cuenta con {inventario[indice][3]} unidades de {nombre}.")
         
 
+
+print("\nInventario actualizado:")
+    
+for fila in inventarioPrueba:
+    print(fila)
+    
 Actualizar(inventarioPrueba)
     

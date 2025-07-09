@@ -53,9 +53,9 @@ def main():
             time.sleep(3)
    
         elif opciones =="7":
-            pass 
+            cargar_inventario()
         elif opciones =="8":
-            pass 
+            guardar_inventario() 
         elif opciones =="9":
             print("Haz salido del sistema...")
             break
