@@ -2,6 +2,7 @@ import time
 from Include.inventario import revisar_inventario,ingresarProducto, buscar_inventario, inventario
 from ventas import vender_producto
 from ordenamientos import quicksort, merge_sort
+from Actualizacion import Actualizar
 from archivosbinarios import guardar_inventario, cargar_inventario
 
 
@@ -33,7 +34,7 @@ def main():
         elif opciones == "4":
             vender_producto(inventario)
         elif opciones=="5":
-            pass
+            Actualizar(inventario)
         elif opciones =="6": 
             print("\n--De que forma quiere Ordenar el Inventario..--")
             print("1. Por Código")
