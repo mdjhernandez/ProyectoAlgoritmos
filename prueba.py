@@ -89,4 +89,4 @@ for fila in inventarioPrueba:
     print(fila)
     
 Actualizar(inventarioPrueba)
-    
+print(inventarioPrueba)
