@@ -23,7 +23,7 @@ def vender_producto(listaInventario):
                 productos_encontrados.append(producto)
         
         if not productos_encontrados:
-            print("Error: Producto no encontrado")
+            print("Producto No disponibel")
         else:
             # Seleccionar el producto (asumimos el primero si hay varios)
             producto_encontrado = productos_encontrados[0]
@@ -43,7 +43,12 @@ def vender_producto(listaInventario):
             if cantidad_vender <= 0:
                 print("Error: No puedes vender cantidades negativas o cero.")
             elif cantidad_vender > cantidad_disponible:
-                print("Error: No puedes vender más de lo que tienes en inventario.")
+                print("Hay disponibilidad de", cantidad_disponible, "desea tal cantidad?")
+                op=input("Seleccione (1) para Si, (2) para No")
+                if (op==1):
+                    producto_encontrado[3] -= cantidad_disponible
+                else:
+                    print("Error: No puedes vender una mayor cantidad de la que posees")
             else:
                 cantidad = True
         else:
