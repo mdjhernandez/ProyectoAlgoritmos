@@ -25,7 +25,7 @@ def Actualizar(inventario):
             if (select==1):
                 ingresarProducto()
             else:
-                break #
+                break #Se regrese al invent
         else:
             # Seleccionar el producto (asumimos el primero si hay varios)
             producto_encontrado = productos_encontrados[0]
@@ -36,9 +36,9 @@ def Actualizar(inventario):
     print("2. Nombre")
     print("3. Precio")
     print("4. Cantidad")
-    res=input("Seleccione una opcion")
-    nombre = producto_encontrado[1]
-    if (res==1):
+    res=input("Seleccione una de las opciones\n")
+    #nombre = producto_encontrado[1]
+    if res == "1":
         codigo_anterior = producto_encontrado[0]
         nombre=producto_encontrado[1]
         print(f"\nProducto seleccionado: {nombre}")
@@ -46,14 +46,14 @@ def Actualizar(inventario):
         new_cant=int(input("Ingrese el nuevo Codigo para el producto ")) #ARREGLAR ESTA PREGUNTA
         producto_encontrado[0] == new_cant
         print(f"Actualizacion realizada. Ahora el producto {nombre} tiene por codigo {new_cant}.")
-    if (res==2):
+    if res  =="2":
         nombre=producto_encontrado[1]
         print(f"\nProducto seleccionado: {nombre}")
         print(f"Nombre Actual: {nombre}")
         new_cant=int(input("Ingrese el nuevo Nombre para el producto ")) #ARREGLAR ESTA PREGUNTA
         producto_encontrado[1] == new_cant
         print(f"Actualizacion realizada. Ahora el producto {nombre} tiene por nombre {new_cant}.")
-    if (res==3):
+    if res == "3":
         precio_anterior = producto_encontrado[2]
         nombre=producto_encontrado[1]
         print(f"\nProducto seleccionado: {nombre}")
@@ -61,7 +61,7 @@ def Actualizar(inventario):
         new_cant=int(input("Ingrese el nuevo Precio para el producto ")) #ARREGLAR ESTA PREGUNTA
         producto_encontrado[2] == new_cant
         print(f"Actualizacion realizada. Ahora el producto {nombre} tiene por codigo {new_cant}.")
-    if (res==4):
+    if res == "4" :
         cantidad_disponible = producto_encontrado[3]
         print(f"\nProducto seleccionado: {nombre}")
         print(f"Cantidad disponible: {cantidad_disponible}")
