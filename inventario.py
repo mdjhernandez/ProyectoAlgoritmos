@@ -52,10 +52,7 @@ def buscar_inventario():
     
     while metodo != "1" and metodo != "2":
         print("Error: Introduce una opcion valida. ")
-        metodo = input("Busca por (1) Código o (2) Nombre: ")
-        
-        
-        
+        metodo = input("Busca por (1) Código o (2) Nombre: ")     
     producto_buscar = input("Ingrese el producto a buscar: ")
     
     productos_encontrados = []
